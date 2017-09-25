@@ -16,6 +16,8 @@ class App extends Component {
   }
 
   render() {
+
+    
     return (
       <div className="App">
         <div className="App-header">
@@ -24,12 +26,11 @@ class App extends Component {
         </div>
 
         <div>
-        <ul>
-          <li><p>doubloons: {this.props.doubloons}</p></li>
-          <li><p>arrrcoins: {this.props.arrrcoins}</p></li>
-          <li><p>exchange rate: {this.props.exchangeRate}</p></li>
-        </ul>
-
+          <ul>
+            <li><p>doubloons: {this.props.doubloons}</p></li>
+            <li><p>arrrcoins: {this.props.arrrcoins}</p></li>
+            <li><p>exchange rate: {this.props.exchangeRate}</p></li>
+          </ul>
         </div>
         <div className="buttons">
 
@@ -43,7 +44,7 @@ class App extends Component {
   }
 }
 
-  //bring in the state info from the store
+  //bring in the state info from the store and set it as props
   function mapStateToProps(state) {
     return{
       doubloons: state.doubloons,
