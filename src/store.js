@@ -53,7 +53,7 @@ export function reducer(state, action) {
   //when the update action is performed
   if (action.type === 'UPDATE'){
       randomizeRate(0,10);
-      //setup autobuy
+      //if the updated rate is above 7, automatically buy
       if (exchangeRate > 7 && state.arrrcoins > 0){
         return {
                     doubloons: state.doubloons + exchangeRate,
@@ -61,7 +61,7 @@ export function reducer(state, action) {
                    exchangeRate: exchangeRate,
         }
       }
-
+      //if the updated rate is 7 or below, just update the rate
       return { doubloons: state.doubloons,
                arrrcoins: state.arrrcoins,
                exchangeRate: exchangeRate
