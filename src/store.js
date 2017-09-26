@@ -15,6 +15,7 @@ export const buyAction = {
 export const sellAction = {
   type: 'SELL',
 }
+
 //when the exchange rate updates
 export const exRateAction = {
   type: 'UPDATE',
@@ -51,13 +52,23 @@ export function reducer(state, action) {
 
   //when the update action is performed
   if (action.type === 'UPDATE'){
-
       randomizeRate(0,10);
+      //setup autobuy
+      if (exchangeRate > 7 && state.arrrcoins > 0){
+        return {
+                    doubloons: state.doubloons + exchangeRate,
+                   arrrcoins: state.arrrcoins - 1,
+                   exchangeRate: exchangeRate,
+        }
+      }
+
       return { doubloons: state.doubloons,
                arrrcoins: state.arrrcoins,
                exchangeRate: exchangeRate
       }
   }
+
+
 
   //return the initial state if none of the actions have been performed
   return state;
